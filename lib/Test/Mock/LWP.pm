@@ -62,7 +62,7 @@ The mock HTTP::Response object - a Test::MockObject object
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 AUTHOR
 

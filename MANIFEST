@@ -18,4 +18,5 @@ inc/Module/AutoInstall.pm
 META.yml
 t/mocked.t
 MANIFEST
+README
 Changes
