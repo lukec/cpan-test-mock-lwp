@@ -17,7 +17,7 @@ Test::Mock::LWP::UserAgent - Mocks LWP::UserAgent
 
 =head1 SYNOPSIS
 
-Mock LWP::UserAgent to make testing easier.
+Make LWP::UserAgent to make testing easier.
 
 See Test::Mock::LWP manpage for more details.
 

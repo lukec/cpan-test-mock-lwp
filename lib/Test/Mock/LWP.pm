@@ -16,7 +16,7 @@ Test::Mock::LWP - Easy mocking of LWP packages
 
 =head1 SYNOPSIS
 
-Mock LWP packages to make testing easier.
+Make LWP packages to make testing easier.
 
     use Test::Mock::LWP;
 

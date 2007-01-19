@@ -16,7 +16,7 @@ Test::Mock::HTTP::Response - Mocks HTTP::Response
 
 =head1 SYNOPSIS
 
-Mock HTTP::Response to make testing easier.
+Make HTTP::Response to make testing easier.
 
 See Test::Mock::LWP manpage for more details.
 

@@ -16,7 +16,7 @@ Test::Mock::HTTP::Request - Mocks HTTP::Request
 
 =head1 SYNOPSIS
 
-Mock HTTP::Request to make testing easier.
+Make HTTP::Request to make testing easier.
 
 See Test::Mock::LWP manpage for more details.
 
