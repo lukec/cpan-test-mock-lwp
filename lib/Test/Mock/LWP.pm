@@ -2,11 +2,8 @@ package Test::Mock::LWP;
 use strict;
 use warnings;
 use base 'Exporter';
+use Test::MockObject;
 our @EXPORT = qw($Mock_ua $Mock_req $Mock_request $Mock_resp $Mock_response);
-
-use Test::Mock::LWP::UserAgent;
-use Test::Mock::HTTP::Response;
-use Test::Mock::HTTP::Request;
 
 =head1 NAME
 
@@ -62,7 +59,23 @@ The mock HTTP::Response object - a Test::MockObject object
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
+
+BEGIN {
+    # Don't load the mock classes if the real ones are already loaded
+    my $mo = Test::MockObject->new;
+    my @mock_classes = qw(
+        LWP::UserAgent;
+        HTTP::Response;
+        HTTP::Request;
+    );
+    for my $c (@mock_classes) {
+        if (!$mo->check_class_loaded($c)) {
+            eval "require $c";
+            warn $@ if $@;
+        }
+    }
+}
 
 =head1 AUTHOR
 
