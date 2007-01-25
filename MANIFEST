@@ -17,6 +17,7 @@ inc/Module/Install/Makefile/Version.pm
 inc/Module/AutoInstall.pm
 META.yml
 t/mocked.t
+t/easy-load.t
 MANIFEST
 README
 Changes
