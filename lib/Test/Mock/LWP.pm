@@ -64,15 +64,23 @@ our $VERSION = '0.03';
 BEGIN {
     # Don't load the mock classes if the real ones are already loaded
     my $mo = Test::MockObject->new;
-    my @mock_classes = qw(
-        LWP::UserAgent;
-        HTTP::Response;
-        HTTP::Request;
+    my @mock_classes = (
+        [ 'HTTP::Response' => '$Mock_response $Mock_resp' ],
+        [ 'HTTP::Request'  => '$Mock_request $Mock_req' ],
+        [ 'LWP::UserAgent' => '$Mock_ua' ],
     );
     for my $c (@mock_classes) {
-        if (!$mo->check_class_loaded($c)) {
-            eval "require $c";
-            warn $@ if $@;
+        my ($real, $imports) = @$c;
+        if (!$mo->check_class_loaded($real)) {
+            my $mock_class = "Test::Mock::$real";
+            eval "require $mock_class"; 
+            if ($@) {
+                warn "error during require $mock_class: $@" if $@;
+                next;
+            }
+            my $import = "$mock_class qw($imports)";
+            eval "import $import";
+            warn "error during import $import: $@" if $@;
         }
     }
 }
