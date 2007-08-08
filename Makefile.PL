@@ -6,7 +6,7 @@ use inc::Module::Install;
 name            'Test-Mock-LWP';
 author          'Luke Closs <test-mock-lwp@awesnob.com>';
 build_requires  'Test::More'        => '0.42';
-requires        'Test::MockObject'  => 0;
+requires        'Test::MockObject'  => '1.08';
 license         'perl';
 
 # Auto-install all dependencies from CPAN
