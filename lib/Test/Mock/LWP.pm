@@ -59,7 +59,7 @@ The mock HTTP::Response object - a Test::MockObject object
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 BEGIN {
     # Don't load the mock classes if the real ones are already loaded

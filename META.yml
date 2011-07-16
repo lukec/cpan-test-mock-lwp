@@ -21,4 +21,4 @@ no_index:
 requires:
   Test::MockObject: 1.08
   Test::More: 0.42
-version: 0.05
+version: 0.06

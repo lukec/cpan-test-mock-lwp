@@ -1,3 +1,6 @@
+0.06 - Sat Jul 16 10:26:33 PDT 2011
+ - Update Makefile.PL and META.yml for RT #69466
+
 0.05 - Wed Aug  8 14:21:50 PDT 2007
  - Bump dependency on Test::MockObject to avoid some noisy warnings
 
