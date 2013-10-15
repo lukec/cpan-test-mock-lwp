@@ -36,7 +36,8 @@ BEGIN {
 $Mock_ua->set_always('simple_request', HTTP::Response->new);
 $Mock_ua->set_always('request', HTTP::Response->new);
 
-package LWP::UserAgent;
+package # hide from PAUSE
+    LWP::UserAgent;
 use strict;
 use warnings;
 

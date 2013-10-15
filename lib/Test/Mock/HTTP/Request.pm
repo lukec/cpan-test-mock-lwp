@@ -38,7 +38,8 @@ $Mock_req->set_always('content', '');
 sub new { $Mock_req };
 $Mock_req->mock('-new_args', sub { delete $Mock_req->{new_args} });
 
-package HTTP::Request;
+package # hide from PAUSE
+    HTTP::Request;
 
 our $VERSION = 'Mocked';
 
