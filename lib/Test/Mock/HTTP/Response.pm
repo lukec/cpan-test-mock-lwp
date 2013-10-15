@@ -38,7 +38,8 @@ $Mock_resp->set_always('code', 200);
 $Mock_resp->set_always('content', '');
 $Mock_resp->set_always('is_success', 1);
 
-package HTTP::Response;
+package # hide from PAUSE
+    HTTP::Response;
 
 our $VERSION = 'Mocked';
 
