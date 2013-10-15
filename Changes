@@ -1,3 +1,5 @@
+0.07 - Mon Oct 14 20:41:41 PDT 2013
+ - Hide other distribution modules from PAUSE - via shibayu36
 0.06 - Sat Jul 16 10:26:33 PDT 2011
  - Update Makefile.PL and META.yml for RT #69466
 
