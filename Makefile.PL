@@ -1,4 +1,6 @@
 #!/usr/bin/perl -w
+BEGIN { push @INC, '.' }
+
 use warnings;
 use strict;
 use inc::Module::Install;
