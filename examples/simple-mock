@@ -1,0 +1,26 @@
+BEGIN {
+  # Load the mock modules *first*.
+  use Test::Mock::LWP::UserAgent;
+  use Test::Mock::HTTP::Response;
+  use Test::Mock::HTTP::Request;
+}
+
+# Load the modules you'll use to actually do LWP operations.
+# These will automatically be mocked for you.
+use LWP::UserAgent;
+use HTTP::Response;
+use HTTP::Request;
+
+# Now set up the response you want to get back.
+$Mock_resp->mock( content => sub { 'foo' });
+$Mock_resp->mock( code    => sub { 201 });
+
+	# Pretend we're making a request to a site.
+for (1..2) {
+	my $req   = HTTP::Request->new(GET => 'http://nevergoeshere.com');
+	my $agent = LWP::UserAgent->new;
+	my $res   = $agent->simple_request($req);
+
+	# The values you added to the mock are now there.
+  printf("The site returned %d %s\n", $res->code, $res->content);
+}
