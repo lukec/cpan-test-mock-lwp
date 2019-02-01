@@ -1,0 +1,43 @@
+use strict;
+BEGIN {
+  # Load the mock modules *first*.
+  use Test::Mock::LWP::UserAgent;
+  use Test::Mock::HTTP::Response;
+  use Test::Mock::HTTP::Request;
+}
+
+# Load the modules you'll use to actually do LWP operations.
+# These will automatically be mocked for you.
+use LWP::UserAgent;
+use HTTP::Response;
+use HTTP::Request;
+
+my @contents = qw(foo bar baz);
+my @codes    = qw(404 400 200);
+
+# initialize counter.
+my $code_counter = 2;
+my $content_counter = 2;
+
+my $content_sub = sub {
+  $content_counter += 1;
+  $content_counter %= 3;
+  $contents[$content_counter];
+};
+
+my $code_sub = sub {
+  $code_counter += 1;
+  $code_counter %= 3;
+  return $codes[$code_counter];
+};
+
+$Mock_resp->mock(content => $content_sub);
+$Mock_resp->mock(code    => $code_sub);
+
+my $req   = HTTP::Request->new(GET => 'http://nevergoeshere.com');
+my $agent = LWP::UserAgent->new;
+
+for (0..5) {
+	my $res   = $agent->simple_request($req);
+  printf("The site returned %d %s\n", $res->code, $res->content);
+}
